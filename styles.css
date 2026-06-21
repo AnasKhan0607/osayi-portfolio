@@ -119,6 +119,51 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .hero__name { margin-bottom: 6px; }
 }
 
+/* ───────────────── RUNWAY (scroll-scrub) ───────────────── */
+.runway {
+  position: relative;
+  height: 320vh;          /* scroll distance that drives the walk */
+  background: var(--bg);
+}
+.runway__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+.runway__video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05);
+  background: #000;
+}
+.runway__overlay { position: absolute; inset: 0; pointer-events: none; }
+.runway__label {
+  position: absolute;
+  top: clamp(86px, 14vh, 150px); left: var(--pad);
+  font-size: 11px; letter-spacing: 0.28em;
+  color: #fff; mix-blend-mode: difference;
+}
+.runway__cue {
+  position: absolute;
+  bottom: clamp(40px, 8vh, 80px); left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px; letter-spacing: 0.3em;
+  color: #fff; mix-blend-mode: difference;
+  transition: opacity 0.4s ease;
+  animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,5px); } }
+.runway__bar {
+  position: absolute;
+  left: var(--pad); right: var(--pad);
+  bottom: clamp(18px, 4vh, 36px);
+  height: 1px; background: rgba(255,255,255,0.22);
+}
+.runway__bar span { display: block; height: 100%; width: 0; background: #fff; }
+
 /* ───────────────── MARQUEE ───────────────── */
 .marquee {
   border-top: 1px solid var(--line);
